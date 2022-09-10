@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import RegisterForm from './RegisterForm';
 
 export default function LoginForm({ Login, error }) {
 
@@ -28,6 +29,8 @@ export default function LoginForm({ Login, error }) {
                 <input type="password" name="password" id="password" onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>
             </div>
             <input type="submit" value="LOGIN" />
+            <div class="space"></div>
+            <input type="submit" value="Registration" />
         </div>
     </form>
   )
