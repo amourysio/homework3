@@ -1,23 +1,22 @@
 import React, { useState } from 'react'
-import RegisterForm from './RegisterForm';
 
-export default function LoginForm({ Login, error }) {
+export default function RegistForm({ Registration, error }) {
 
-  const [details, setDetails] = useState({name: "", email:"", password:""});
+  const [details, setDetails] = useState({name: "", email:"", password:"", confirmPassword:""});
 
   const submitHandler = e =>{
     e.preventDefault();
 
-    Login(details);
+    Registration(details);
   }
   
-  return (
+  return ( 
     <form onSubmit={submitHandler}>
         <div className="form-inner">
             <h2>Login</h2>
-            {(error != "") ? (<div className="error">{error}</div>): ""}
+            {(error !== "") ? (<div className="error">{error}</div>): ""}
             <div className="form-group">
-                <label htmlFor="name">Name:</label>
+                <label htmlFor="name">Names:</label>
                 <input type="text" name="name" id="name" onChange={e => setDetails({...details, name: e.target.value})} value={details.name}/>
             </div>
             <div className="form-group">
@@ -28,9 +27,11 @@ export default function LoginForm({ Login, error }) {
                 <label htmlFor="password">Password:</label>
                 <input type="password" name="password" id="password" onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>
             </div>
-            <input type="submit" value="LOGIN" />
-            <div class="space"></div>
-            <input type="submit" value="Registration" />
+            <div className="form-group">
+                <label htmlFor="confirmPassword">Confirm Password:</label>
+                <input type="password" name="password" id="confirmPassword" onChange={e => setDetails({...details, confirmPassword: e.target.value})} value={details.confirmPassword}/>
+            </div>
+            <input type="submit" value="Create" />
         </div>
     </form>
   )

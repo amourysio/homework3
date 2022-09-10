@@ -1,25 +1,24 @@
 import React, { useState } from 'react'
-import LoginForm from './components/LoginForm';
 
+// component form
+import RegistForm from './components/RegistForm';
+
+// admin login function in test
 function App() {
-  const adminUser = {
-    email: "admin@admin.com",
-    password: "admin123"
 
-  }
-
-  const [user, setUser] = useState({name:"", email:""});
+  const [user, setUser] = useState({name:"", email:"", password:"",confirmPassword:""});
   const [error, setError] = useState("");
 
-  const Login = details => {
+  // Check for valid admin credentials
+  const Registration = details => {
     console.log(details);
 
-    if(details.email == adminUser.email && details.password == adminUser.password)
+    if(details.password === details.confirmPassword)
     {
       console.log("Logged in");
       setUser({
         name: details.name,
-        emai: details.email
+        email: details.email
       });
     }else{
       console.log("Details do not match!");
@@ -27,19 +26,21 @@ function App() {
     }
   }
 
+  // Logout button with default credential
   const Logout = () =>{
     setUser({name:"", email:""});
   }
 
+
   return (
     <div className="App">
-     {(user.email != "") ? (
+     {(user.email !== "") ? (
       <div className="welcome">
-        <h2>Welcome, <span>{user.name}</span></h2>
+        <h2>Welcome, <span>{user.name}</span><span>{user.email}</span></h2>
         <button onClick={Logout}>Logout</button>
       </div>
      ): (
-      <LoginForm  Login={Login} error={error}/>
+      <RegistForm  Registration={Registration} error={error}/>
      )}
     </div>
   );
