@@ -120,3 +120,9 @@ form .form-inner input[type="submit"]:hover,
     color: #FE4880;
     font-weight: 700;
 }
+
+form .form-inner .space{
+    width: 80px;
+    height: auto;
+    display: inline-block;
+}
